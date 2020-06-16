@@ -1,0 +1,29 @@
+#tabla1{ 
+   	border: 1px solid #1E679A; 
+   	width: 350px; 
+   	text-align: center;
+
+   	
+	/*indicamos que el margen izquierdo, es la mitad de la anchura*/
+	margin-left:350px;
+
+	/*determinamos una altura*/
+	height:410px;
+	/*indicamos que el margen superior, es la mitad de la altura*/
+	margin-top:-1px;
+	border:1px solid #808080;
+	padding:5px;*/
+} 
+#cabtab1{ 
+
+   	background-color: #1E679A; 
+   	font-weight: bold; 
+   	color: #ffffff; 
+   	padding: 2 2 2 2px; 
+   	text-align: center;
+} 
+#cuerpotab1{ 
+   padding: 4 4 4 4px; 
+   background-color: #6988B6; 
+   text-align: center;
+}

@@ -1,0 +1,179 @@
+.logo{
+    position: absolute;
+    top: -3px;
+    left: 45px;
+    height: auto;
+    border-style: solid;
+}
+
+.empresa-factura{
+    position: absolute;
+    top: -3px;
+    left: 480px;
+    width: 80%;
+    height:auto;
+    font-family:verdana;
+    font-size: 30px;
+
+}
+.empresa{
+    position: absolute;
+    top: 110px;
+    left: 35px;
+    width: 40%;
+    padding: 5px;
+    font-size: 11px;
+    border-style: solid;
+    font-family: “Trebuchet MS”, Arial;    
+}
+
+.cliente{
+    position: absolute;
+    top: 110px;
+    left: 350px;
+    width: 50%;
+    padding: 5px;
+    font-size: 11px;
+    border-style: solid;
+    
+    font-family: “Trebuchet MS”, Arial;    
+
+}
+
+.detalle{
+    position: absolute;
+    top: 250px;
+    left: 35px;
+    width: 80%;
+    height:auto;
+    font-family:verdana;
+    font-size: 20px;
+}
+
+.detalle th{
+    background-color: blue;
+    color: white;
+    height: 40px;
+    text-align: center;
+}
+
+.detalle td{
+    height: 25px;
+}
+.detalle tr:nth-child(odd) {
+    background-color:#f2f2f2;
+}
+.detalle tr:nth-child(even) {
+    background-color:#fbfbfb;
+}
+
+/*.cliente th{
+padding: 5px;
+font-size: 16px;
+background-color: #83aec0;
+background-image: url(fondo_th.png);
+background-repeat: repeat-x;
+color: #FFFFFF;
+border-right-width: 1px;
+border-bottom-width: 1px;
+border-right-style: solid;
+border-bottom-style: solid;
+border-right-color: #558FA6;
+border-bottom-color: #558FA6;
+font-family: “Trebuchet MS”, Arial;
+text-transform: uppercase;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*th{
+    background-color: blue;
+    color: white;
+    height: 40px;
+    text-align: center;
+}
+
+td{
+    height: 25px;
+}
+tr:nth-child(odd) {
+    background-color:#f2f2f2;
+}
+tr:nth-child(even) {
+    background-color:#fbfbfb;
+}
+
+tfoot{
+    text-align: right;
+}*/
+
+#tipo_comprobante{
+    position:absolute;
+    left: 500px;
+    top: 00px;
+    font-family:arial;
+    font-size: 48px;    
+}
+
+#tipo{
+    position:absolute;
+    left: 500px;
+    top: 50px;
+    font-family:arial;
+    font-size: 24px;    
+}
+#nombre{
+    position:absolute;
+    left: 50px;
+    top: 100px;
+    font-family:arial;
+    font-size: 18px;    
+}
+#num_dni{
+    position:absolute;
+    left: 50px;
+    top: 120px;
+    font-family:arial;
+    font-size: 18px;    
+}
+#direccion{
+    position:absolute;
+    left: 50px;
+    top: 140px;
+    font-family:arial;
+    font-size: 18px;    
+}
+
+#fecha{
+    position:absolute;
+    left: 500px;
+    top: 100px;
+    font-family:arial;
+    font-size: 18px;    
+}
+
+#telefono{
+    position:absolute;
+    left: 500px;
+    top: 140px;
+    font-family:arial;
+    font-size: 18px;    
+}
+
+#detalle{
+    position:absolute;
+    left: 50px;
+    top: 180px;
+    font-family:arial;
+    font-size: 18px;    
+}

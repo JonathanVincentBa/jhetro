@@ -1,0 +1,60 @@
+.wrapper_404 h1 {
+  font-size: 200px;
+  color: #02bdd5;
+  line-height: 1;
+}
+
+.wrapper_404 h2 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+.wrapper_404 .btn-home {
+  background: #414141;
+  border: none;
+  color: #fff;
+  padding: 20px 35px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-size: 13px;
+  line-height: 1em;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  border-radius: 0;
+}
+
+.error-box{
+    background:url(../img/error-bg.jpg) no-repeat center center #fff!important;
+    width:100%
+  }
+
+.m-b-40{margin-bottom:40px!important}
+.btn-rounded{border-radius:60px;padding:7px 18px}
+.btn-rounded.btn-lg{padding:.75rem 1.5rem}
+.btn-rounded.btn-sm{padding:.25rem .5rem;font-size:12px}
+.btn-rounded.btn-xs{padding:.25rem .5rem;font-size:10px}
+
+.wrapper_401 h1 {
+  font-size: 200px;
+  color: #02bdd5;
+  line-height: 1;
+}
+
+.wrapper_401 h2 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+.wrapper_401 .btn-home {
+  background: #414141;
+  border: none;
+  color: #fff;
+  padding: 20px 35px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-size: 13px;
+  line-height: 1em;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  border-radius: 0;
+}
