@@ -33,7 +33,7 @@ class UsuarioController extends Controller
     public function create()
     {
         $personas=DB::table('persona as p')
-        ->select('p.id_persona',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'))
+        ->select('p.id_persona','p.nombre')
         ->where('p.tipo_persona','=','E')
         ->whereExists(function ($query) {
             $query->select(DB::raw(1))

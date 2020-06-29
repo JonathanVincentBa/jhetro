@@ -26,16 +26,12 @@ class EmpleadoController extends Controller
     		$personas=DB::table('persona as p')
     			->join('empresa as e', 'p.id_empresa','=','e.id_empresa')
     			->join('cargo as c', 'p.id_cargo','=','c.id_cargo')
-                ->select('p.id_persona','e.razon_social as empresa','c.descripcion as cargo','p.tipo_persona',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'),'p.direccion','p.tipo_dni','p.num_dni','p.telefono','p.estado')
+                ->select('p.id_persona','e.razon_social as empresa','c.descripcion as cargo','p.tipo_persona','p.nombre','p.direccion','p.tipo_dni','p.num_dni','p.telefono','p.estado')
                 ->where([
                         ['p.nombre','LIKE','%'.$query.'%'],
                         ['p.tipo_persona','=','E'],
                         ['p.estado','=','1']])
-                ->where([
-                        ['p.apellido','LIKE','%'.$query.'%'],
-                        ['p.tipo_persona','=','E'],
-                        ['p.estado','=','1']])
-    			->orderBy('p.id_persona','asc')
+                ->orderBy('p.id_persona','asc')
     			->paginate(7);
     		return view('seguridad.empleado.index',["personas"=>$personas,"searchText"=>$query]);
     	}
@@ -55,7 +51,6 @@ class EmpleadoController extends Controller
             $persona->id_cargo=$request->get('id_cargo');
             $persona->tipo_persona='E';
             $persona->nombre=$request->get('nombre');
-            $persona->apellido=$request->get('apellido');
             $persona->direccion=$request->get('direccion');
             $persona->tipo_dni=$request->get('tipo_dni');
             $persona->num_dni=$request->get('num_dni');
@@ -85,7 +80,6 @@ class EmpleadoController extends Controller
         $persona->id_cargo=$request->get('id_cargo');
         $persona->tipo_persona='E';
         $persona->nombre=$request->get('nombre');
-        $persona->apellido=$request->get('apellido');
         $persona->direccion=$request->get('direccion');
         $persona->tipo_dni=$request->get('tipo_dni');
         $persona->num_dni=$request->get('num_dni');
@@ -110,7 +104,7 @@ class EmpleadoController extends Controller
         //Obtener los registros
         $empleados=DB::table('persona as p')
             ->join('cargo as c','c.id_cargo','=','p.id_cargo')
-            ->select('p.num_dni',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'),'p.telefono','c.descripcion as cargo')
+            ->select('p.num_dni','p.nombre','p.telefono','c.descripcion as cargo')
             ->where('p.tipo_persona','=','E')
             ->orderby('nombre','asc')
             ->get();

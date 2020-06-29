@@ -26,6 +26,7 @@ class GuiaFormRequest extends Request
         return [
         'id_motivo_traslado'=>'required',
         'id_forma_pago'=>'required',
+        'id_persona'=>'required',
         'ciudad_origen'=>'required|max:45',
         'ciudad_destino'=>'required|max:45',
         'nom_remitente'=>'required|max:50',

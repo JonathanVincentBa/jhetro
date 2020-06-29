@@ -17,7 +17,6 @@ class Persona extends Model
     	'id_cargo',
     	'tipo_persona',
     	'nombre',
-		'apellido',
 		'direccion',
     	'tipo_dni',
     	'num_dni',

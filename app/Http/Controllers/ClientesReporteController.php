@@ -66,6 +66,7 @@ class ClientesReporteController extends Controller
 
     public function reporteXfacturar_excel(Request $request)
     {
+        
         //Reporte X Facturar
             $nombre=$request->get('nom_remitente');
             $fecha_inicio=$request->get('fecha_inicio_1');

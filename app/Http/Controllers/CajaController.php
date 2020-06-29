@@ -143,8 +143,16 @@ class CajaController extends Controller
         ->join('ciudad as c','c.id_ciudad','=','s.id_ciudad')
         ->select('c.descripcion')
         ->get();
-        $personas=DB::table('persona as p')->select(DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'))->get();
-        return view("caja.edit",["cabecera"=>Cabecera::findOrFail($id),"detalles"=>$detalles,"forma_pago"=>$forma_pago,"ciudades"=>$ciudades,"sucursales"=>$sucursales,"personas"=>$personas]);
+        
+        $personas=DB::table('persona')->get();
+        //dd($cliente);
+        return view("caja.edit",["cabecera"=>Cabecera::findOrFail($id),
+                                 "detalles"=>$detalles,
+                                 "forma_pago"=>$forma_pago,
+                                 "ciudades"=>$ciudades,
+                                 "sucursales"=>$sucursales,
+                                 "personas"=>$personas
+                                 ]);
     }
     /**
      * Update the specified resource in storage.
@@ -161,9 +169,9 @@ class CajaController extends Controller
             $cabecera=Cabecera::findOrFail($id);
             $cabecera->recargo=$request->get('recargo');
             $cabecera->id_forma_pago=$request->get('id_formas_pago');
+            $cabecera->id_persona=$request->get('id_persona');
             $cabecera->ciudad_origen=$request->get('ciudad_origen');
             $cabecera->ciudad_destino=$request->get('ciudad_destino');
-            $cabecera->nom_remitente=$request->get('nom_remitente');
             $cabecera->nota=$request->get('nota');
             $cabecera->num_guia=$request->get('num_guia');
             $cabecera->flete=$request->get('flete');

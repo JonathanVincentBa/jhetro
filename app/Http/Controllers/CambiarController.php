@@ -90,7 +90,7 @@ class CambiarController extends Controller
 
             ->get();
 
-        $personas = DB::table('persona as p')->select(DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'))->get();
+        $personas = DB::table('persona')->get();
 
         return view("editar_guia.cambiar.edit", ["cabecera" => Cabecera::findOrFail($id), "detalles" => $detalles, "forma_pago" => $forma_pago, "ciudades" => $ciudades, "sucursales" => $sucursales, "personas" => $personas]);
     }

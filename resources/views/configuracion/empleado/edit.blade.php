@@ -49,18 +49,13 @@
                         </select>
                     </div>
                 </div>
-		            	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+		            	<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 		        			<div class="form-group">
 				            	<label for="nombre">Nombre</label>
 				            	<input type="text" name="nombre" requerid value="{{ $persona->nombre }}" class="form-control" placeholder="Nombre del empleado..." onKeyUp="this.value=this.value.toUpperCase();">
 		            		</div>
 		        		</div>
-		        		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-		        			<div class="form-group">
-				            	<label for="apellido">Apellido</label>
-				            	<input type="text" name="apellido" requerid value="{{ $persona->apellido }}" class="form-control" placeholder="Apellido del empleado..." onKeyUp="this.value=this.value.toUpperCase();">
-		            		</div>
-		        		</div>
+		        		
 		        		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 		        			<div class="form-group">
 				            	<label>Tipo D.N.I.</label>

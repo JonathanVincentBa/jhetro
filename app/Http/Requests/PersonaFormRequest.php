@@ -25,7 +25,6 @@ class PersonaFormRequest extends Request
     {
         return [
         'nombre'=>'required|max:100',
-        'apellido'=>'required|max:100',
         'tipo_dni'=>'required',
         'num_dni'=>'required',
         'telefono'=>'required|numeric', 

@@ -33,7 +33,7 @@ class BuscarGuiaController extends Controller
                         ['num_guia', 'LIKE', '%' . $query . '%'],
                         ['estado','=','1']])
                 ->orderBy('id_cabecera', 'desc')
-                ->paginate(7);
+                ->paginate(10);
             return view("buscar_guia.cliente.index", ["guias" => $guias, "searchText" => $query]);
         }
     }

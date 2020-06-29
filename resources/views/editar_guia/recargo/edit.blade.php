@@ -84,19 +84,22 @@
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="form-group">
 				<label for="recargo">Remitente</label>
-				<select name="nom_remitente" class="form-control selectpicker" data-live-search="true"  requerid>
+				<select name="id_persona" class="form-control selectpicker" data-live-search="true"  requerid>
 					@foreach ($personas as $per)
 					{
-						@if($per->nombre==$cabecera->nom_remitente)
-							<option value="{{$per->nombre}}" selected>{{$per->nombre}}</option>
+						@if($per->id_persona==$cabecera->id_persona)
+							<option value="{{$per->id_persona}}" selected>{{$per->nombre}}</option>
 						@else
-							<option value="{{$per->nombre}}">{{$per->nombre}}</option>
+							<option value="{{$per->id_persona}}">{{$per->nombre}}</option>
 						@endif
+						
 					}
 					@endforeach
 				</select>
 			</div>
 		</div>
+		
+
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="form-group">
 				<label for="nota">Nota</label>
@@ -123,7 +126,7 @@
 						<td></td>
 						<td></td>
 						<td style="text-align:right;"><B><br>PRIMA</B></td>
-						<td style="font-family: Arial; font-size: 12pt;"><br>$ <input  size="10" style="font-family: Arial; font-size: 12pt; width : 60px; border: none; " readonly name="prima" id="prima" value="{{ $cabecera->prima }}"></input></td>
+						<td style="font-family: Arial; font-size: 12pt;"><br>$ <input style="font-family: Arial; font-size: 12pt; width : 60px; border: none; " type="number"  size="10"  name="prima" id="prima" value="{{ $cabecera->prima }}" onKeyUp="this.value=this.value.toUpperCase();"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -162,9 +165,19 @@
 	<script>
 			flete=0;
 			total=0;
+			prima=0;
 
 						
 			$("#recargo").change(function()
+			{
+				recargo=$("#recargo").val();
+				flete=$("#flete").val();
+				prima=$("#prima").val();
+				valor_guia=parseFloat(flete)+parseFloat(prima)+parseFloat(recargo);
+				$("#valor_guia").val(valor_guia);
+			});
+
+			$("#prima").change(function()
 			{
 				recargo=$("#recargo").val();
 				flete=$("#flete").val();
@@ -227,7 +240,6 @@
 				prima=$("#prima").val();
 				valor_guia=parseFloat(flete)+parseFloat(prima)+parseFloat(recargo);
 				$("#valor_guia").val(valor_guia);
-
 			}
 	</script>
 @endpush

@@ -128,7 +128,6 @@
                   <li><a href="{{URL('mantenimiento/formas_pago')}}"><i class="fa fa-circle-o"></i> Formas de Pago</a></li>
                   <li><a href="{{URL('mantenimiento/motivo_traslado')}}"><i class="fa fa-circle-o"></i> Motivo de Traslado</a></li>
                   <li><a href="{{URL('mantenimiento/sucursal')}}"><i class="fa fa-circle-o"></i> Sucursal</a></li>
-                  <li><a href="{{URL('mantenimiento/vehiculo')}}"><i class="fa fa-circle-o"></i> Vehículo</a></li>    
                 </ul>
               </li>
             @endif

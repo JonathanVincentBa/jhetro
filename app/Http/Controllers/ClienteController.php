@@ -29,13 +29,9 @@ class ClienteController extends Controller
     		$query=trim($request->get('searchText'));
     		$personas=DB::table('persona as p')
     			->join('empresa as e', 'p.id_empresa','=','e.id_empresa')
-    			->select('p.id_persona','e.razon_social as empresa','p.tipo_persona',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'),'p.direccion','p.tipo_dni','p.num_dni','p.telefono','p.estado')
+    			->select('p.id_persona','e.razon_social as empresa','p.tipo_persona','p.nombre','p.direccion','p.tipo_dni','p.num_dni','p.telefono','p.estado')
     			->where([
                         ['p.nombre','LIKE','%'.$query.'%'],
-                        ['p.tipo_persona','=','C'],
-                        ['p.estado','=','1']])
-                ->orwhere([
-                        ['p.apellido','LIKE','%'.$query.'%'],
                         ['p.tipo_persona','=','C'],
                         ['p.estado','=','1']])
     			->orderBy('p.id_persona','desc')
@@ -56,7 +52,6 @@ class ClienteController extends Controller
         $persona->id_cargo='1';
         $persona->tipo_persona='C';
         $persona->nombre=$request->get('nombre');
-        $persona->apellido=$request->get('apellido');
         $persona->direccion=$request->get('direccion');
         $persona->tipo_dni=$request->get('tipo_dni');
         $persona->num_dni=$request->get('num_dni');
@@ -85,7 +80,6 @@ class ClienteController extends Controller
     	$persona= Persona::findOrFail($id);
         $persona->tipo_persona='C';
         $persona->nombre=$request->get('nombre');
-        $persona->apellido=$request->get('apellido');
         $persona->direccion=$request->get('direccion');
         $persona->tipo_dni=$request->get('tipo_dni');
         $persona->num_dni=$request->get('num_dni');
@@ -111,7 +105,7 @@ class ClienteController extends Controller
         return DB::table('direccion as d')
         ->join('persona as p','p.id_persona','=','d.id_persona')
         ->where('d.id_ciudad','=',$id)
-        ->select('d.id_persona',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombreCompleto'),'p.num_dni','d.descripcion','p.telefono')
+        ->select('d.id_persona','p.nombre','p.num_dni','d.descripcion','p.telefono')
         ->get();
     }
 
@@ -120,7 +114,7 @@ class ClienteController extends Controller
         
         //Obtener los registros
         $clientes=DB::table('persona as p')
-            ->select('p.num_dni',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'),'p.direccion','p.telefono')
+            ->select('p.num_dni','p.nombre','p.direccion','p.telefono')
             ->where('p.tipo_persona','=','C')
             ->orderby('nombre','asc')
             ->get();

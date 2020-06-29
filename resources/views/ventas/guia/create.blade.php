@@ -80,6 +80,7 @@
                         @endforeach
                     </select>
                     <input type="hidden" readonly name="nom_remitente" id="nom_remitente" >
+                    <input type="hidden" readonly name="id_persona" id="id_persona" >
                 </div>
             </div>
             <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
@@ -244,6 +245,7 @@
         subtotal = [];
         
         $("#guardar").hide();
+        //$("#id_persona").change(mostrarValoresRemitente);
         $("#nombre_remitente").change(mostrarValoresRemitente);
         $('#ciudad_origen').on('change',onSelectPersonaOrigenChange);
         $('#ciudad_destino').on('change',onSelectPersonaDestinoChange);
@@ -339,10 +341,11 @@
         {
            
           datosRemitente=document.getElementById('nombre_remitente').value.split('_');
-          $("#nom_remitente").val(datosRemitente[4]);
+          $("#id_persona").val(datosRemitente[0]);
           $("#dni_remitente").val(datosRemitente[1]);
           $("#direccion_remitente").val(datosRemitente[2]);
           $("#fono_remitente").val(datosRemitente[3]);   
+          $("#nom_remitente").val(datosRemitente[4]);
         }
 
         function limpiar()

@@ -6,6 +6,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
+use DateTime;
 
 class ClienteXFacturarExport implements FromView
 {
@@ -26,7 +27,13 @@ class ClienteXFacturarExport implements FromView
    
      public function view(): View
      {
-         $guias=DB::select('SELECT c.num_guia, num_guia_trans, c.fecha_emision, c.ciudad_origen, c.ciudad_destino, 
+         $this->fecha_inicio=new DateTime($this->fecha_inicio);
+        $this->fecha_inicio=$this->fecha_inicio->format('Y-m-d H:i:s');
+        
+        $this->fecha_final=new DateTime($this->fecha_final);
+        $this->fecha_final=$this->fecha_final->format('Y-m-d H:i:s');
+        //dd($this->fecha_inicio,$this->fecha_final,$this->nombre);
+        $guias=DB::select('SELECT c.num_guia, num_guia_trans, c.fecha_emision, c.ciudad_origen, c.ciudad_destino, 
                             c.nom_remitente, c.nom_destinatario,  SUM(d.cantidad) as cantidad,c.valor_guia
                             FROM cabecera as c
                             INNER JOIN formas_pago as f
@@ -34,8 +41,8 @@ class ClienteXFacturarExport implements FromView
                             INNER join detalle as d
                             on c.id_cabecera=d.id_cabecera
                             WHERE c.nom_remitente="'.$this->nombre.'"
-                            AND date(c.fecha_emision) BETWEEN "'.$this->fecha_inicio.'"
-                            AND "'.$this->fecha_final.'"
+                            AND date(c.fecha_emision) BETWEEN "'.$this->fecha_final.'"
+                            AND "'.$this->fecha_inicio.'"
                             AND c.id_forma_pago = 3
                             GROUP by c.id_cabecera 
                             ORDER BY c.fecha_emision  ASC');
@@ -43,8 +50,8 @@ class ClienteXFacturarExport implements FromView
                             FROM cabecera as c 
                             WHERE c.nom_remitente ="'.$this->nombre.'"
                             AND c.id_forma_pago = 3
-                            AND date(c.fecha_emision) BETWEEN "'.$this->fecha_inicio.'"
-                            AND "'.$this->fecha_final.'"');
+                            AND date(c.fecha_emision) BETWEEN "'.$this->fecha_final.'"
+                            AND "'.$this->fecha_inicio.'"');
         return view('reportes.clientes.excel.xfacturar',["guias"=>$guias, "suma"=>$suma]);
      }
 }

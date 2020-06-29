@@ -23,12 +23,7 @@
 		            	<input type="text" name="nombre" requerid value="{{old('nombre')}}" class="form-control" placeholder="Nombre del empleado..." onKeyUp="this.value=this.value.toUpperCase();" required>
             		</div>
         		</div>
-        		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-        			<div class="form-group">
-		            	<label for="apellido">Apellido</label>
-		            	<input type="text" name="apellido" requerid value="{{old('apellido')}}" class="form-control" placeholder="Apellido del empleado..." onKeyUp="this.value=this.value.toUpperCase();" required>
-            		</div>
-        		</div>
+        		
         		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
         			<div class="form-group">
 		            	<label>Tipo D.N.I.</label>
@@ -78,7 +73,7 @@
             </div>
             </div>
 			{!!Form::close()!!}
-			<div class="form-group" style="position:absolute; top:402px; left:95px;">
+			<div class="form-group" style="position:absolute; top:330px; left:95px;">
 				<a href="{{URL::action('EmpleadoController@index')}}"><button class="btn btn-danger">Cancelar</button></a>
 			</div>
 			

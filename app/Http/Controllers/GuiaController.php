@@ -31,7 +31,7 @@ class GuiaController extends Controller
                         ['num_guia', 'LIKE', '%' . $query . '%'],
                         ['estado','=','1']])
                 ->orderBy('id_cabecera', 'desc')
-                ->paginate(7);
+                ->paginate(10);
             return view('ventas.guia.index', ["guias" => $guias, "searchText" => $query]);
         }
 
@@ -61,7 +61,7 @@ class GuiaController extends Controller
         $formas_pagos = DB::table('formas_pago')->where('estado', '=', '1')->get();
         $ciudades = DB::table('ciudad')->where('estado', '=', '1')->get();
         $personas = DB::table('persona as p')
-        ->select('p.id_persona',DB::raw('CONCAT(p.nombre," ",p.apellido)as nombre'),'p.num_dni','p.direccion','p.telefono')
+        ->select('p.id_persona','p.nombre','p.num_dni','p.direccion','p.telefono')
         ->orderby('nombre','asc')
         ->where('p.estado', '=', '1')->get();
         return view('ventas.guia.create', ["sucursales" => $sucursales, "motivos_traslado" => $motivos_traslado, "formas_pagos" => $formas_pagos, "ciudades" => $ciudades,"personas"=>$personas]);
@@ -75,9 +75,10 @@ class GuiaController extends Controller
             {
                 DB::beginTransaction();
                 $cabecera = new Cabecera;
-                $cabecera->id_sucursal = session('key');
+                $cabecera->id_sucursal = session('sucursal');
                 $cabecera->id_motivo_traslado = $request->get('id_motivo_traslado');
                 $cabecera->id_forma_pago = $request->get('id_forma_pago');
+                $cabecera->id_persona= $request->get('id_persona');
                 $cabecera->id_users = Auth::user()->id;
                 $cabecera->ciudad_origen = $request->get('ciu_ori');
                 $cabecera->ciudad_destino = $request->get('ciu_des');
@@ -90,7 +91,15 @@ class GuiaController extends Controller
                 $cabecera->direccion_destinatario = $request->get('direccion_destinatario');
                 $cabecera->fono_destinatario = $request->get('fono_destinatario');
                 $cabecera->num_guia = $request->get('num_guia');
-                $cabecera->num_guia_trans = $request->get('num_guia_trans');
+                if($request->get('num_guia_trans')==0)
+                {
+                    $cabecera->num_guia_trans = "0";
+                }
+                else
+                {
+                    $cabecera->num_guia_trans = $request->get('num_guia_trans');
+                }
+                
                 $mytime = Carbon::now('America/Guayaquil');
                 $cabecera->fecha_emision = $mytime->toDateTimeString();
                 $cabecera->guia_rem_cliente = $request->get('guia_rem_cliente');
